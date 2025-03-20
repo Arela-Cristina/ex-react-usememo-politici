@@ -2,26 +2,25 @@ import React, { useState, useEffect, useMemo } from "react"
 import style from './Home-Page.module.css'
 
 
+const Politician = React.memo(({ p }) => {
+    console.log("Renderizando Politician:", p.name)
+    return (
+        <figure>
+            <img src={p.image} alt={p.name} />
+            <div className={style.caption}>
+                <div>Nome: {p.name}</div>
+                <div>Specie: {p.species}</div>
+                <div>Biography: {p.gender}</div>
+            </div>
+        </figure>
+    );
+});
+
 
 export default function HomePage() {
 
-    const Politician = React.memo(({ p }) => {
-        console.log("Renderizando Politician:", p.name)
-        return (
-            <figure>
-                <img src={p.image} alt={p.name} />
-                <div className={style.caption}>
-                    <div>Nome: {p.name}</div>
-                    <div>Specie: {p.species}</div>
-                    <div>Biography: {p.gender}</div>
-                </div>
-            </figure>
-        );
-    });
-
-
     // stato della query input  di ricerca
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState('annie')
 
     // stato di partenza per i mostri
     const [politician, setPolitician] = useState([])
@@ -66,8 +65,8 @@ export default function HomePage() {
             </div>
 
             <section>
-                {filtered.map((p, i) => (
-                    <Politician key={i} p={p} />
+                {filtered.map((p) => (
+                    <Politician key={p.id} p={p} />
                 ))}
             </section>
         </>
