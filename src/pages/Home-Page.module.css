@@ -1,0 +1,25 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+figure {
+    background-color: pink;
+    display: flex;
+    height: 10rem;
+}
+
+img {
+    display: block;
+    width: 10rem;
+}
+
+.caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 25px;
+}
